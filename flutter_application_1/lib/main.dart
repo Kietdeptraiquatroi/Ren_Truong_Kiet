@@ -4,28 +4,9 @@ void main() {
   runApp(const MyApp());
 }
 
-Expanded _buildButton(String value, Color color) {
-  return Expanded(
-    child: Container(
-      padding: EdgeInsets.fromLTRB(5, 5, 5, 5),
-      child: FloatingActionButton(
-        onPressed: () => btnClicked(value),
-        backgroundColor: color,
-        child: Text(
-          value,
-          style: TextStyle(
-            fontSize: 30,
-          ),
-        ),
-      ),
-    ),
-  );
-}
-
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -68,11 +49,11 @@ class _MyHomePageState extends State<MyHomePage> {
       so2 = int.parse(text);
       if (PhepTinh == "+") {
         KetQua = (so1 + so2).toString();
-      } else if (btnText == "-") {
+      } else if (PhepTinh == "-") {
         KetQua = (so1 - so2).toString();
-      } else if (btnText == "x") {
+      } else if (PhepTinh == "x") {
         KetQua = (so1 * so2).toString();
-      } else if (btnText == "/") {
+      } else if (PhepTinh == "/") {
         KetQua = (so1 / so2).toString();
       }
     } else {
@@ -84,66 +65,23 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
-  Widget OutlineButtion(String value) {
+  Widget _buildButton(String value, Color color) {
     return Expanded(
-      child: OutlinedButton(
-        onPressed: () {},
-        child: Text(
-          value,
-          style: TextStyle(fontSize: 25),
+      child: Container(
+        padding: EdgeInsets.fromLTRB(5, 5, 5, 5),
+        child: FloatingActionButton(
+          onPressed: () => btnClicked(value),
+          backgroundColor: color,
+          child: Text(
+            value,
+            style: TextStyle(
+              fontSize: 30,
+            ),
+          ),
         ),
       ),
     );
   }
-
-  Widget buttonSection = Container(
-    color: Colors.black,
-    alignment: Alignment.bottomCenter,
-    child: Column(
-      children: [
-        Row(
-          children: [
-            _buildButton("AC", Colors.grey),
-            _buildButton("C", Colors.grey),
-            _buildButton("%", Colors.grey),
-            _buildButton("/", Colors.yellow),
-          ],
-        ),
-        Row(
-          children: [
-            _buildButton("7", Colors.grey.shade700),
-            _buildButton("8", Colors.grey.shade700),
-            _buildButton("9", Colors.grey.shade700),
-            _buildButton("x", Colors.yellow),
-          ],
-        ),
-        Row(
-          children: [
-            _buildButton("4", Colors.grey.shade700),
-            _buildButton("5", Colors.grey.shade700),
-            _buildButton("6", Colors.grey.shade700),
-            _buildButton("-", Colors.yellow),
-          ],
-        ),
-        Row(
-          children: [
-            _buildButton("1", Colors.grey.shade700),
-            _buildButton("2", Colors.grey.shade700),
-            _buildButton("3", Colors.grey.shade700),
-            _buildButton("+", Colors.yellow),
-          ],
-        ),
-        Row(
-          children: [
-            _buildButton("0", Colors.grey.shade700),
-            _buildButton(",", Colors.grey.shade700),
-            _buildButton(".", Colors.grey.shade700),
-            _buildButton("=", Colors.yellow),
-          ],
-        ),
-      ],
-    ),
-  );
 
   final _controller = TextEditingController();
   @override
@@ -167,7 +105,46 @@ class _MyHomePageState extends State<MyHomePage> {
                         color: Colors.white)),
               ),
             ),
-            buttonSection,
+            Container(
+              color: Colors.black,
+              alignment: Alignment.bottomCenter,
+              child: Column(
+                children: [
+                  Row(
+                    children: [
+                      _buildButton("7", Colors.grey.shade700),
+                      _buildButton("8", Colors.grey.shade700),
+                      _buildButton("9", Colors.grey.shade700),
+                      _buildButton("/", Colors.yellow),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      _buildButton("4", Colors.grey.shade700),
+                      _buildButton("5", Colors.grey.shade700),
+                      _buildButton("6", Colors.grey.shade700),
+                      _buildButton("x", Colors.yellow),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      _buildButton("1", Colors.grey.shade700),
+                      _buildButton("2", Colors.grey.shade700),
+                      _buildButton("3", Colors.grey.shade700),
+                      _buildButton("-", Colors.yellow),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      _buildButton("C", Colors.grey.shade700),
+                      _buildButton("0", Colors.grey.shade700),
+                      _buildButton("=", Colors.grey.shade700),
+                      _buildButton("+", Colors.yellow),
+                    ],
+                  ),
+                ],
+              ),
+            ),
           ],
         ),
       ),
