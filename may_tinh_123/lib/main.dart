@@ -4,13 +4,16 @@ void main() {
   runApp(const MyApp());
 }
 
+//sdofihsuodhfvshudfhsdhidhf
 class MyApp extends StatelessWidget {
+  //
   const MyApp({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Máy Tính Điện Thoại',
+      title: 'Máy Tính Điện Thoại', //sdiufgisdgfisdgufmsudf
       theme: ThemeData(
+        //
         primarySwatch: Colors.blue,
       ),
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
@@ -18,6 +21,7 @@ class MyApp extends StatelessWidget {
   }
 }
 
+//sdfssdfsdfsdfsdf
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key, required this.title}) : super(key: key);
 
@@ -26,26 +30,34 @@ class MyHomePage extends StatefulWidget {
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
+//sfsdfsetrerywe9rhdsiaufhysef
 class _MyHomePageState extends State<MyHomePage> {
   int so1 = 0, so2 = 0;
   String PhepTinh = "", KetQua = "", text = "0";
 
   void btnClicked(String btnText) {
+    //
     if (btnText == "C") {
-      KetQua = "";
-      text = "";
-      so1 = 0;
-      so2 = 0;
-    } else if (btnText == "+" ||
-        btnText == "-" ||
-        btnText == "x" ||
+      //
+      KetQua = ""; //
+      text = ""; //
+      so1 = 0; //
+      so2 = 0; //
+    } else if (btnText == "+" || //
+        btnText == "-" || //
+        btnText == "x" || //
         btnText == "/") {
-      so1 = int.parse(text);
+      //
+      so1 = int.parse(text); //
       KetQua = "";
-      PhepTinh = btnText;
+
+      ///
+      PhepTinh = btnText; //
     } else if (btnText == "=") {
-      so2 = int.parse(text);
+      //
+      so2 = int.parse(text); //
       if (PhepTinh == "+") {
+        //ưeuioaysujmdfhusauf
         KetQua = (so1 + so2).toString();
       } else if (PhepTinh == "-") {
         KetQua = (so1 - so2).toString();
