@@ -24,7 +24,6 @@ class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key, required this.title}) : super(key: key);
 
   final String title;
-
   @override
   State<MyHomePage> createState() => _MyHomePageState();
 }
@@ -32,7 +31,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int so1 = 0, so2 = 0;
   String PhepTinh = "", KetQua = "", text = "0";
-
+//tính
   void btnClicked(String btnText) {
     if (btnText == "C") {
       KetQua = "";
@@ -60,7 +59,6 @@ class _MyHomePageState extends State<MyHomePage> {
     } else {
       KetQua = int.parse(text + btnText).toString();
     }
-
     setState(() {
       text = KetQua;
     });
@@ -84,6 +82,7 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
+//giao diện
   final _controller = TextEditingController();
   @override
   Widget build(BuildContext context) {
