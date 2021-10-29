@@ -4,10 +4,9 @@ void main() {
   runApp(const MyApp());
 }
 
-//Kiệt gửi bài
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
-//Kiet
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -31,7 +30,6 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int so1 = 0, so2 = 0;
   String PhepTinh = "", KetQua = "", text = "0";
-//tính
   void btnClicked(String btnText) {
     if (btnText == "C") {
       KetQua = "";
