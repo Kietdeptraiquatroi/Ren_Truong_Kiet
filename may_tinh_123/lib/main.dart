@@ -21,7 +21,6 @@ class MyApp extends StatelessWidget {
   }
 }
 
-//sdfssdfsdfsdfsdf
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key, required this.title}) : super(key: key);
 
@@ -30,7 +29,7 @@ class MyHomePage extends StatefulWidget {
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
-//sfsdfsetrerywe9rhdsiaufhysef
+// Nguyễn Văn Su Ren
 class _MyHomePageState extends State<MyHomePage> {
   int so1 = 0, so2 = 0;
   String PhepTinh = "", KetQua = "", text = "0";
