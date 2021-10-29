@@ -4,14 +4,16 @@ void main() {
   runApp(const MyApp());
 }
 
+//sdofihsuodhfvshudfhsdhidhf
 class MyApp extends StatelessWidget {
+  //
   const MyApp({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Máy Tính Điện Thoại',
+      title: 'Máy Tính Điện Thoại', //sdiufgisdgfisdgufmsudf
       theme: ThemeData(
+        //
         primarySwatch: Colors.blue,
       ),
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
@@ -27,13 +29,56 @@ class MyHomePage extends StatefulWidget {
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
+// Nguyễn Văn Su Ren
 class _MyHomePageState extends State<MyHomePage> {
+  int so1 = 0, so2 = 0;
+  String PhepTinh = "", KetQua = "", text = "0";
+
+  void btnClicked(String btnText) {
+    //
+    if (btnText == "C") {
+      //
+      KetQua = ""; //
+      text = ""; //
+      so1 = 0; //
+      so2 = 0; //
+    } else if (btnText == "+" || //
+        btnText == "-" || //
+        btnText == "x" || //
+        btnText == "/") {
+      //
+      so1 = int.parse(text); //
+      KetQua = "";
+
+      ///
+      PhepTinh = btnText; //
+    } else if (btnText == "=") {
+      //
+      so2 = int.parse(text); //
+      if (PhepTinh == "+") {
+        //ưeuioaysujmdfhusauf
+        KetQua = (so1 + so2).toString();
+      } else if (PhepTinh == "-") {
+        KetQua = (so1 - so2).toString();
+      } else if (PhepTinh == "x") {
+        KetQua = (so1 * so2).toString();
+      } else if (PhepTinh == "/") {
+        KetQua = (so1 / so2).toString();
+      }
+    } else {
+      KetQua = int.parse(text + btnText).toString();
+    }
+    setState(() {
+      text = KetQua;
+    });
+  }
+
   Widget _buildButton(String value, Color color) {
     return Expanded(
       child: Container(
         padding: EdgeInsets.fromLTRB(5, 5, 5, 5),
         child: FloatingActionButton(
-          onPressed: () {},
+          onPressed: () => btnClicked(value),
           backgroundColor: color,
           child: Text(
             value,
