@@ -28,47 +28,11 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int so1 = 0, so2 = 0;
-  String PhepTinh = "", KetQua = "", text = "0";
-  void btnClicked(String btnText) {
-    if (btnText == "C") {
-      KetQua = "";
-      text = "";
-      so1 = 0;
-      so2 = 0;
-    } else if (btnText == "+" ||
-        btnText == "-" ||
-        btnText == "x" ||
-        btnText == "/") {
-      so1 = int.parse(text);
-      KetQua = "";
-      PhepTinh = btnText;
-    } else if (btnText == "=") {
-      so2 = int.parse(text);
-      if (PhepTinh == "+") {
-        KetQua = (so1 + so2).toString();
-      } else if (PhepTinh == "-") {
-        KetQua = (so1 - so2).toString();
-      } else if (PhepTinh == "x") {
-        KetQua = (so1 * so2).toString();
-      } else if (PhepTinh == "/") {
-        KetQua = (so1 / so2).toString();
-      }
-    } else {
-      KetQua = int.parse(text + btnText).toString();
-    }
-    setState(() {
-      text = KetQua;
-    });
-  }
 
   Widget _buildButton(String value, Color color) {
     return Expanded(
       child: Container(
-        padding: EdgeInsets.fromLTRB(5, 5, 5, 5),
-        child: FloatingActionButton(
-          onPressed: () => btnClicked(value),
-          backgroundColor: color,
+          onPressed: () {},
           child: Text(
             value,
             style: TextStyle(
@@ -92,51 +56,44 @@ class _MyHomePageState extends State<MyHomePage> {
           children: <Widget>[
             Expanded(
               child: Container(
-                color: Colors.black,
-                alignment: Alignment.bottomRight,
-                padding: EdgeInsets.all(10),
                 child: Text(text,
                     style: TextStyle(
-                        fontSize: 50,
-                        fontWeight: FontWeight.w100,
-                        color: Colors.white)),
+                        color: Colors.blue)),
               ),
             ),
             Container(
-              color: Colors.black,
-              alignment: Alignment.bottomCenter,
               child: Column(
                 children: [
                   Row(
                     children: [
-                      _buildButton("7", Colors.grey.shade700),
-                      _buildButton("8", Colors.grey.shade700),
-                      _buildButton("9", Colors.grey.shade700),
-                      _buildButton("/", Colors.yellow),
+                      _buildButton("7", Colors.blue),
+                      _buildButton("8", Colors.blue),
+                      _buildButton("9", Colors.blue),
+                      _buildButton("/", Colors.blue),
                     ],
                   ),
                   Row(
                     children: [
-                      _buildButton("4", Colors.grey.shade700),
-                      _buildButton("5", Colors.grey.shade700),
-                      _buildButton("6", Colors.grey.shade700),
-                      _buildButton("x", Colors.yellow),
+                      _buildButton("4", Colors.blue),
+                      _buildButton("5", Colors.blue),
+                      _buildButton("6", Colors.blue),
+                      _buildButton("x", Colors.blue),
                     ],
                   ),
                   Row(
                     children: [
-                      _buildButton("1", Colors.grey.shade700),
-                      _buildButton("2", Colors.grey.shade700),
-                      _buildButton("3", Colors.grey.shade700),
-                      _buildButton("-", Colors.yellow),
+                      _buildButton("1", Colors.blue),
+                      _buildButton("2", Colors.blue),
+                      _buildButton("3", Colors.blue),
+                      _buildButton("-", Colors.blue),
                     ],
                   ),
                   Row(
                     children: [
-                      _buildButton("C", Colors.grey.shade700),
-                      _buildButton("0", Colors.grey.shade700),
-                      _buildButton("=", Colors.grey.shade700),
-                      _buildButton("+", Colors.yellow),
+                      _buildButton("C", Colors.blue),
+                      _buildButton("0", Colors.blue),
+                      _buildButton("=", Colors.blue),
+                      _buildButton("+", Colors.blue),
                     ],
                   ),
                 ],
