@@ -194,6 +194,7 @@ class _FirstRouteState extends State<FirstRoute> {
   }
 }
 
+//TRUONG
 class LoadScreen extends StatefulWidget {
   @override
   _LoadScreenState createState() => _LoadScreenState();
@@ -201,10 +202,131 @@ class LoadScreen extends StatefulWidget {
 
 class _LoadScreenState extends State<LoadScreen> {
   @override
+  void initState() {
+    super.initState();
+    Timer(
+        Duration(seconds: 3),
+        () => Navigator.push(
+            context, MaterialPageRoute(builder: (context) => ThirdRouter())));
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.pink.shade200,
-      body: Center(child: Column()),
+      body: Center(
+          child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Image.asset(
+            'images/nen_cho.png',
+            height: 120,
+          ),
+          SizedBox(
+            height: 20,
+          ),
+          Text(
+            'Tam Tự Sát',
+            style: TextStyle(
+                fontFamily: 'IrishGrover',
+                fontSize: 50,
+                fontWeight: FontWeight.bold,
+                color: Colors.yellow.shade300),
+          ),
+          SizedBox(
+            height: 20,
+          ),
+          CircularProgressIndicator(
+            valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+          )
+        ],
+      )),
+    );
+  }
+}
+
+class SecondRoute extends StatelessWidget {
+  SecondRoute({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Center(
+        child: Expanded(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                padding: EdgeInsets.fromLTRB(0, 30, 0, 0),
+                child: Center(
+                  child: Image.asset(
+                    'images/logo1.png',
+                    width: 200,
+                    height: 200,
+                  ),
+                ),
+              ),
+              Container(
+                padding: EdgeInsets.fromLTRB(0, 30, 0, 5),
+                child: Center(
+                    child: Text(
+                  "UPS...Counld't Sign In",
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 20,
+                  ),
+                )),
+              ),
+              Container(
+                padding: EdgeInsets.fromLTRB(0, 0, 0, 7),
+                child: Center(
+                    child: Text(
+                  "Your username and password don't match.",
+                  style: TextStyle(
+                      color: Colors.grey,
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold),
+                )),
+              ),
+              Container(
+                padding: EdgeInsets.fromLTRB(0, 0, 0, 190),
+                child: Center(
+                    child: Text(
+                  'Please, try again',
+                  style: TextStyle(
+                    color: Colors.grey,
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                )),
+              ),
+              Container(
+                padding: EdgeInsets.fromLTRB(15, 0, 15, 0),
+                child: Center(
+                  child: TextButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => FirstRoute()),
+                      );
+                    },
+                    child: Text(
+                      'TRY AGAIN',
+                      style: TextStyle(
+                        fontSize: 22,
+                        color: Colors.white,
+                      ),
+                    ),
+                    style: TextButton.styleFrom(
+                        backgroundColor: Colors.black,
+                        minimumSize: Size(400, 55)),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }
