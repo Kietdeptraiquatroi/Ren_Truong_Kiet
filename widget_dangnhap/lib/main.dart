@@ -142,10 +142,11 @@ class _FirstRouteState extends State<FirstRoute> {
                             child: const Text(
                               'Tắt nè',
                               style: TextStyle(
-                                  backgroundColor: Colors.pinkAccent,
-                                  fontSize: 100,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white),
+                                backgroundColor: Colors.pinkAccent,
+                                fontSize: 100,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white,
+                              ),
                             ),
                           )
                         ],
@@ -159,7 +160,7 @@ class _FirstRouteState extends State<FirstRoute> {
               } else {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => FirstRoute()),
+                  MaterialPageRoute(builder: (context) => SecondRoute()),
                 );
               }
             }
@@ -194,7 +195,6 @@ class _FirstRouteState extends State<FirstRoute> {
   }
 }
 
-//TRUONG
 class LoadScreen extends StatefulWidget {
   @override
   _LoadScreenState createState() => _LoadScreenState();
@@ -331,14 +331,22 @@ class SecondRoute extends StatelessWidget {
   }
 }
 
-//Nguyễn Văn Su Ren
-class lsView {
+class lsView1 {
   String label;
   String Soluong;
   bool _Checked;
   Icon icon;
 
-  lsView(this.label, this.icon, this._Checked, this.Soluong);
+  lsView1(this.label, this.icon, this._Checked, this.Soluong);
+}
+
+class lsView2 {
+  String label;
+  String Soluong;
+  bool _Checked;
+  Icon icon;
+
+  lsView2(this.label, this.icon, this._Checked, this.Soluong);
 }
 
 class ThirdRouter extends StatefulWidget {
@@ -348,8 +356,8 @@ class ThirdRouter extends StatefulWidget {
 }
 
 class _ThirdRouterState extends State<ThirdRouter> {
-  List<lsView> _lsMaiboxes = [
-    lsView(
+  List<lsView1> _lsMaiboxes = [
+    lsView1(
         "All inboxes",
         Icon(
           Icons.all_inbox,
@@ -357,7 +365,7 @@ class _ThirdRouterState extends State<ThirdRouter> {
         ),
         false,
         '1'),
-    lsView(
+    lsView1(
         "ICloud",
         Icon(
           Icons.cloud,
@@ -365,7 +373,7 @@ class _ThirdRouterState extends State<ThirdRouter> {
         ),
         false,
         '5'),
-    lsView(
+    lsView1(
         "Gmail",
         Icon(
           Icons.mail,
@@ -373,7 +381,7 @@ class _ThirdRouterState extends State<ThirdRouter> {
         ),
         false,
         '1'),
-    lsView(
+    lsView1(
         "Hotmail",
         Icon(
           Icons.mail_rounded,
@@ -381,7 +389,7 @@ class _ThirdRouterState extends State<ThirdRouter> {
         ),
         false,
         '1'),
-    lsView(
+    lsView1(
         "VIP",
         Icon(
           Icons.star,
@@ -390,9 +398,9 @@ class _ThirdRouterState extends State<ThirdRouter> {
         false,
         '1'),
   ];
-
-  List<lsView> _lsSpecial = [
-    lsView(
+  List<lsView1> selectedListTitle1 = [];
+  List<lsView2> _lsSpecial = [
+    lsView2(
         "Secure",
         Icon(
           Icons.all_inbox,
@@ -400,7 +408,7 @@ class _ThirdRouterState extends State<ThirdRouter> {
         ),
         false,
         '1'),
-    lsView(
+    lsView2(
         "Notication",
         Icon(
           Icons.cloud,
@@ -409,7 +417,7 @@ class _ThirdRouterState extends State<ThirdRouter> {
         false,
         '5'),
   ];
-  List<lsView> selectedListTitle = [];
+  List<lsView2> selectedListTitle2 = [];
 
   Widget _ListView(
       String label, String Soluong, bool _Checked, Icon icon, int index) {
@@ -443,19 +451,22 @@ class _ThirdRouterState extends State<ThirdRouter> {
                   label == 'ICloud' ||
                   label == 'VIP') {
                 _lsMaiboxes[index]._Checked = !_lsMaiboxes[index]._Checked;
+                for (int i = 0; i <= selectedListTitle1.length; i++) {}
                 if (_lsMaiboxes[index]._Checked == true) {
-                  selectedListTitle.add(lsView(label, icon, _Checked, Soluong));
+                  selectedListTitle1
+                      .add(lsView1(label, icon, _Checked, Soluong));
                 } else if (_lsMaiboxes[index]._Checked == false) {
-                  selectedListTitle.removeWhere(
+                  selectedListTitle1.removeWhere(
                       (element) => element.label == _lsMaiboxes[index].label);
                 }
-              } else if (label == 'Secure' || label == 'Notication') {
+              }
+              if (label == 'Secure' || label == 'Notication') {
                 _lsSpecial[index]._Checked = !_lsSpecial[index]._Checked;
-
                 if (_lsSpecial[index]._Checked == true) {
-                  selectedListTitle.add(lsView(label, icon, _Checked, Soluong));
+                  selectedListTitle2
+                      .add(lsView2(label, icon, _Checked, Soluong));
                 } else if (_lsSpecial[index]._Checked == false) {
-                  selectedListTitle.removeWhere(
+                  selectedListTitle2.removeWhere(
                       (element) => element.label == _lsSpecial[index].label);
                 }
               }
@@ -473,7 +484,7 @@ class _ThirdRouterState extends State<ThirdRouter> {
       child: Center(
         child: TextButton(
           child: Text(
-            'DELETE (${selectedListTitle.length})',
+            'DELETE (${selectedListTitle1.length + selectedListTitle2.length})',
             style: TextStyle(
               fontSize: 22,
               color: Colors.white,
@@ -482,24 +493,38 @@ class _ThirdRouterState extends State<ThirdRouter> {
           style: TextButton.styleFrom(
               backgroundColor: Colors.pink.shade100,
               minimumSize: Size(400, 55)),
-          onPressed: () => deleteItem(index),
+          onPressed: () {
+            return deleteItem(index);
+          },
         ),
       ),
     );
   }
 
+  //Vì phải build Button delete nên giao diện có chút không đúng như yêu cầu
   void deleteItem(int index) {
-    for (int i = 0; i < selectedListTitle.length; i++) {
-      if (_lsMaiboxes[index]._Checked == true) {
-        selectedListTitle.removeWhere(
-            (element) => element.label == _lsMaiboxes[index].label);
-        _lsMaiboxes.removeAt(index);
+    if (selectedListTitle1.length != 0) {
+      for (int i = 0; i < _lsMaiboxes.length; i++) {
+        if (_lsMaiboxes[i]._Checked == true) {
+          setState(() {
+            selectedListTitle1.removeWhere(
+                (element) => element.label == _lsMaiboxes[i].label);
+            _lsMaiboxes.removeAt(i);
+            return deleteItem(index);
+          });
+        }
       }
-      if (_lsSpecial[index]._Checked == true) {
-        selectedListTitle
-            .removeWhere((element) => element.label == _lsSpecial[index].label);
-
-        _lsSpecial.removeAt(index);
+    }
+    if (selectedListTitle2.length != 0) {
+      for (int i = 0; i < _lsSpecial.length; i++) {
+        if (_lsSpecial[i]._Checked == true) {
+          setState(() {
+            selectedListTitle2
+                .removeWhere((element) => element.label == _lsSpecial[i].label);
+            _lsSpecial.removeAt(i);
+            return deleteItem(index);
+          });
+        }
       }
     }
   }
