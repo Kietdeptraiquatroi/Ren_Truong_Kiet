@@ -1,6 +1,6 @@
 {
-    "name": "do_an",
-    "short_name": "do_an",
+    "name": "facebook",
+    "short_name": "facebook",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
