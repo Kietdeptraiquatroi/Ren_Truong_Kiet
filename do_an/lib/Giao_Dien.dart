@@ -4,6 +4,7 @@ import 'page/Profile.dart';
 import 'page/Notification.dart';
 
 class SecondRoute extends StatefulWidget {
+  SecondRoute({Key key}) : super(key: key);
   @override
   _SecondRouteState createState() => _SecondRouteState();
 }

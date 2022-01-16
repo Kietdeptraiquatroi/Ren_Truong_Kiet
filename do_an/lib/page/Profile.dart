@@ -1,10 +1,18 @@
+import 'package:InVietNam/Login.dart';
 import 'package:flutter/material.dart';
-import 'data/database.dart';
 
 class Profile extends StatefulWidget {
   @override
   _ProfileState createState() => _ProfileState();
 }
+
+String tenKH = '';
+String imgTK = '';
+String ngaysinh = '';
+String diachi = '';
+String gioitinh = '';
+String email = '';
+String password = '';
 
 class _ProfileState extends State<Profile> {
   Widget BuildButton(String lable) {
@@ -57,7 +65,80 @@ class _ProfileState extends State<Profile> {
                 height: 50,
                 color: Colors.white,
                 child: TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    showDialog<String>(
+                        context: context,
+                        builder: (BuildContext context) => AlertDialog(
+                              backgroundColor: Colors.white,
+                              title: Row(
+                                children: [
+                                  Material(
+                                    clipBehavior: Clip.antiAliasWithSaveLayer,
+                                    shape: CircleBorder(),
+                                    child: Ink.image(
+                                      image: AssetImage(
+                                        imgTK,
+                                      ),
+                                      height: 60,
+                                      width: 60,
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    width: 10,
+                                  ),
+                                  Text(tenKH),
+                                ],
+                              ),
+                              content: Container(
+                                padding: EdgeInsets.fromLTRB(15, 0, 15, 0),
+                                height: 100,
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text('Giới tính: ' + gioitinh),
+                                    Text('Ngày sinh: ' + ngaysinh),
+                                    Text('Địa Chỉ: ' + diachi),
+                                  ],
+                                ),
+                              ),
+                              actions: <Widget>[
+                                ElevatedButton(
+                                  onPressed: () =>
+                                      Navigator.pop(context, 'Tắt'),
+                                  child: const Text(
+                                    'Tắt',
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                ),
+                                ElevatedButton(
+                                  onPressed: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => FirstRoute()),
+                                    );
+                                    tenKH = '';
+                                    imgTK = '';
+                                    ngaysinh = '';
+                                    diachi = '';
+                                    gioitinh = '';
+                                    email = '';
+                                    password = '';
+                                  },
+                                  child: const Text(
+                                    'Dăng Xuất',
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ));
+                  },
                   child: Row(
                     children: [
                       Material(
@@ -65,13 +146,14 @@ class _ProfileState extends State<Profile> {
                         shape: CircleBorder(),
                         child: Ink.image(
                           image: AssetImage(
-                            'images/logo.jpg',
+                            imgTK,
                           ),
                           height: 45,
                           width: 45,
                         ),
                       ),
-                      Text("Đăng Nhập", style: TextStyle(color: Colors.black)),
+                      Text(tenKH,
+                          style: TextStyle(color: Colors.black, fontSize: 20)),
                     ],
                   ),
                 ),
